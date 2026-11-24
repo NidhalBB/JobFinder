@@ -1,0 +1,25 @@
+{
+  "name": "nextstep",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A personal job-search dashboard with public-feed discovery and application tracking.",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test",
+    "telegram:webhook": "node scripts/register-telegram.mjs",
+    "build": "node scripts/build-netlify.mjs"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.6.0",
+    "esbuild": "0.28.2"
+  },
+  "dependencies": {
+    "countries-and-timezones": "3.11.0",
+    "nodemailer": "10.6.1",
+    "unpdf": "1.4.0"
+  },
+  "engines": {
+    "node": ">=22.13"
+  }
+}

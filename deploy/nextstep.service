@@ -1,0 +1,39 @@
+[Unit]
+Description=Nextstep job dashboard
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=nextstep
+Group=nextstep
+WorkingDirectory=/opt/nextstep
+Environment=NODE_ENV=production
+Environment=HOST=127.0.0.1
+Environment=PORT=3000
+Environment=DATA_DIR=/var/lib/nextstep
+Environment=TRUST_PROXY=true
+EnvironmentFile=/etc/nextstep.env
+ExecStart=/usr/bin/node /opt/nextstep/server.mjs
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+StateDirectory=nextstep
+StateDirectoryMode=0700
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+LockPersonality=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+CapabilityBoundingSet=
+
+[Install]
+WantedBy=multi-user.target
